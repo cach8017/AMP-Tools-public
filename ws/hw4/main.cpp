@@ -107,12 +107,28 @@ int main(int argc, char** argv) {
         }
     }
 
+    // create polygon type from the Cspace_obs
+    amp::Polygon Cspace_poly(Cspace_obs)
+
+    // create a vector of 12 polygons from the Cspace_obs vector 
+    std::vector<amp::Polygon> Cspace_Polygons; 
+    for(int i = 1; i = 12; i++){
+        Cspace_Polygons.push_back(Cspace_poly)
+    }
+    
+    // Create a view angle vector
+    std::vector<double> view_angle; 
+    view_angle[0] = 0; 
+    for(int i = 1; i = 12; i++){
+        double angle = i * 2* M_PI / 12.0; 
+        view_angle.push_back(angle); 
+    }
+
     return 0;
     // make an object called Cobs and pass in the Cspace_obs
-    Visualizer::Cobs; 
-    Cobs.makeFigure(Cspace_obs); 
-
-    // Problem 2 
+    Visualizer::makeFigure(Cspace_Polygons, view_angle); 
+    
+    //Problem 2 
 }
 
 
