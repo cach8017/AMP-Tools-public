@@ -69,14 +69,12 @@ void problem3(){
 }
 
 int main(int arg, char** argv){
-    // while(true){
-    //     Path2D path = problem2(); 
-    //     if(path.size() < 999) break;
-    // }
+
+
     //problem1();
     //problem2();
     problem3();
-    MyGDAlgorithm robot(eta_repmag,Q_star,NoiseScalar,d_star,zeta_attract,alpha); 
-    amp::HW5::grade(robot,"cach8017@colorado.edu",argc,argv);
+    //MyGDAlgorithm robot(eta_repmag,Q_star,NoiseScalar,d_star,zeta_attract,alpha); 
+    //amp::HW5::grade(robot,"cach8017@colorado.edu",arg,argv);
     return 0;
 }

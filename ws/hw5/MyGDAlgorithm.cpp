@@ -142,11 +142,12 @@ amp::Path2D MyGDAlgorithm::plan(const amp::Problem2D& problem) {
             // Add the updated point to the path
             path.waypoints.push_back(currentPoint);
             maxiteration--; 
-            if (maxiteration == 0){
-            break; 
-            }
-
+            if (maxiteration == 0) break;
+            
+            
+        //
     }
+    path.waypoints.push_back(problem.q_goal);
     LOG("maxiteration "<<1000-maxiteration);
         return path;
 }
@@ -170,79 +171,79 @@ bool MyGDAlgorithm::isConverged(Eigen::Vector2d& currentPoint, const Eigen::Vect
 }
 
 Eigen::Vector2d MyGDAlgorithm::calculateGradient(Eigen::Vector2d& currentPoint, const amp::Problem2D& problem) {
-    // Calculate the gradient based problem
-    // Implement  gradient calculation logic here.
-    // Return the calculated gradient.
+//     Calculate the gradient based problem
+//     Implement  gradient calculation logic here.
+//     Return the calculated gradient.
 
-    // Define End Point
-    //Eigen::Vector2d goalpoint = problem.q_goal; 
-    // Eigen::Vector2d goalpoint = problem.q_goal; 
-    // LOG("goalpoint: "<<goalpoint);
-    // // Find the distance to the goal
-    // // Calculate the 2-norm (Euclidean distance)
-    // double dgoal = (currentPoint - goalpoint).norm();
-    // LOG("dgoal: "<<dgoal);
-    // //std::cout << dgoal <<std::endl; 
-    // // Initialize attractive gradient
-    // Eigen::Vector2d position; 
+//     Define End Point
+//     Eigen::Vector2d goalpoint = problem.q_goal; 
+//     Eigen::Vector2d goalpoint = problem.q_goal; 
+//     LOG("goalpoint: "<<goalpoint);
+//     // Find the distance to the goal
+//     // Calculate the 2-norm (Euclidean distance)
+//     double dgoal = (currentPoint - goalpoint).norm();
+//     LOG("dgoal: "<<dgoal);
+//     //std::cout << dgoal <<std::endl; 
+//     // Initialize attractive gradient
+//     Eigen::Vector2d position; 
 
-    // // Find the attractive gradient: Uatt using the d_star threshold
-    // if (dgoal <= d_star) {
-    //     position = 2*zeta_attract * (currentPoint - goalpoint);
-    //     std::cout<<"\n Less than dstar Uatt\n"<<std::endl; 
-    // } else {
-    //     position = 2*d_star * zeta_attract * (currentPoint - goalpoint)/dgoal;
-    //     //std::cout<<"\n Greater than dstar Uatt\n"<<std::endl; 
-    // }
-    // PRINT_VEC2("Position after Gradient: ", position);
+//     // Find the attractive gradient: Uatt using the d_star threshold
+//     if (dgoal <= d_star) {
+//         position = 2*zeta_attract * (currentPoint - goalpoint);
+//         std::cout<<"\n Less than dstar Uatt\n"<<std::endl; 
+//     } else {
+//         position = 2*d_star * zeta_attract * (currentPoint - goalpoint)/dgoal;
+//         //std::cout<<"\n Greater than dstar Uatt\n"<<std::endl; 
+//     }
+//     PRINT_VEC2("Position after Gradient: ", position);
     
 
-    // Define the goal point
-    //     Eigen::Vector2d goalPoint = problem.q_goal;
+//     Define the goal point
+//         Eigen::Vector2d goalPoint = problem.q_goal;
 
-    //     // Calculate the distance to the goal (Euclidean distance)
-    //     double dgoal = (currentPoint - goalPoint).norm();
-    //     LOG("dgoal: "<<dgoal);
+//         // Calculate the distance to the goal (Euclidean distance)
+//         double dgoal = (currentPoint - goalPoint).norm();
+//         LOG("dgoal: "<<dgoal);
 
-    //     // Initialize the attractive gradient
-    //     Eigen::Vector2d gradient;
+//         // Initialize the attractive gradient
+//         Eigen::Vector2d gradient;
 
-    //     // Calculate the attractive gradient based on the d_star threshold
-    //     if (dgoal <= d_star) {
-    //         // If within d_star, use a linear attractive force
-    //         gradient =  zeta_attract * (currentPoint - goalPoint);
-    //         // You have a negative sign because the gradient should point towards the goal.
-    //     } else {
-    //         // If beyond d_star, use a quadratic attractive force
-    //         gradient = d_star * zeta_attract * (currentPoint - goalPoint) / dgoal;
-    //     }
-    //     double gradientMagnitude = gradient.norm();
-    //     LOG("Gradient Norm"<<gradientMagnitude);
-    //     // Return the calculated gradient
-    //     return gradient;
-    // }
+//         // Calculate the attractive gradient based on the d_star threshold
+//         if (dgoal <= d_star) {
+//             // If within d_star, use a linear attractive force
+//             gradient =  zeta_attract * (currentPoint - goalPoint);
+//             // You have a negative sign because the gradient should point towards the goal.
+//         } else {
+//             // If beyond d_star, use a quadratic attractive force
+//             gradient = d_star * zeta_attract * (currentPoint - goalPoint) / dgoal;
+//         }
+//         double gradientMagnitude = gradient.norm();
+//         LOG("Gradient Norm"<<gradientMagnitude);
+//         // Return the calculated gradient
+//         return gradient;
+//     }
 
-    //     amp::Obstacle2D Oi;
+//         amp::Obstacle2D Oi;
         
-    //     //Find the repulsive gradient
-    //     for (const std::vector<Obstacle2D>& obstacles : #####OBSTACLE) {
+//         //Find the repulsive gradient
+//         for (const std::vector<Obstacle2D>& obstacles : #####OBSTACLE) {
 
-    //     define di = q_current - closest point on obstacle Oi / distance(q,c)  Eq 4.7
-    //     Find the closest point on the obstacle Oi
+//         define di = q_current - closest point on obstacle Oi / distance(q,c)  Eq 4.7
+//         Find the closest point on the obstacle Oi
     
 
-    //        if (di <= Q_star) {
-    //            xTot += eta_repmag * (1.0 / Q_star - 1.0 / di) * (1.0 / (di * di)) * ((cx - ObsxClosest) / di);
-    //            yTot += eta_repmag * (1.0 / Q_star - 1.0 / di) * (1.0 / (di * di)) * ((cy - ObsyClosest) / di);
-    //        }
-    //     }
+//            if (di <= Q_star) {
+//                xTot += eta_repmag * (1.0 / Q_star - 1.0 / di) * (1.0 / (di * di)) * ((cx - ObsxClosest) / di);
+//                yTot += eta_repmag * (1.0 / Q_star - 1.0 / di) * (1.0 / (di * di)) * ((cy - ObsyClosest) / di);
+//            }
+//         }
 
-    //     Return the gradient of the potential
-    //     std::cout << "current position: "<< position << "\n"<<std::endl; 
+//         Return the gradient of the potential
+//         std::cout << "current position: "<< position << "\n"<<std::endl; 
         
         
-    //     return position;
-    // }
+//         return position;
+//     }
 
 }
 
